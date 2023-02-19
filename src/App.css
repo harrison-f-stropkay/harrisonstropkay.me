@@ -1,20 +1,20 @@
 :root {
-    --cloud-white: rgba(250,250,250);
-    --sky-blue: rgb(17, 158, 219);
-    --night-black: rgb(31, 31, 32);
+    --cloud-white: rgba(98%, 98%, 98%);
+    --sky-blue: rgb(5%, 60%, 90%);
+    --night-black: rgb(10%, 10%, 10%);
+    --earth-green: rgb(131, 182, 141);
 }
 
+.app.dark {
+    color: var(--cloud-white);
+}
+
+.app.light {
+    color: var(--night-black);
+}
 
 * {
     margin-top: 0px;
-}
-
-.App {
-     /* background-image: linear-gradient(
-        rgb(250, 250, 250), 40%,
-        rgb(48, 129, 180),
-        rgb(15, 15, 15)
-    );  */
 }
 
 .banner {
@@ -23,40 +23,86 @@
     left: 0;
     z-index: 999;
     width: 100%;
-    height: 40px;
-    background-color: rgba(250, 250, 250, 0.99);
+    height: 45px;
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;
+    background: var(--cloud-white);
 }
 
+.banner-anchors-and-mode-icon {
+    display: flex;
+}
 
-.banner-anchors {
-    margin-bottom: 10px;
+.banner-mode-icon {
+    height: 28px;
+    padding-top: 10px;
+    margin-left: 20px;
+    margin-right: 05px;
+}
+
+.banner-mode-icon:hover {
+    filter: opacity(0.75);
+    transition: 0.2s;
+}
+
+.banner.light {
+    background: var(--night-black);
+}
+
+.banner-anchors-wrapper {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-right: 10px;
 }
 
 .banner-anchor {
-    font-size: 18px;
+    font-size: 20px;
+    margin-left: 20px;
+    width: 90px;
+    top: auto;
+    text-decoration: none;
+    transition: 0.2s;
     color: var(--night-black);
-    margin-left: 10px;
-    margin-bottom: 5px;
 }
 
-.banner-social-medias {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 10px;
+.banner-anchor.light {
+    color: var(--cloud-white);
+}
+
+.banner-anchor:hover {
+    color: var(--sky-blue);
 }
 
 .name {
     padding-top: 200px;
     color: var(--night-black);
-    background-color: var(--cloud-white);
     text-align: center;
 }
 
-.intro {
+.name.dark {
+    color: var(--cloud-white);
+}
+
+.about {
     color: var(--night-black);
-    background: linear-gradient(var(--cloud-white), var(--sky-blue));
+    max-width: 800px;
+    display: flex;
+
+    margin-top: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-words {
+    margin-right: 30px;
+}
+
+.bio {
+    font-size: 20px;
+}
+
+.my-photo {
+    width: 300px;
 }
 
 .name {
@@ -66,16 +112,28 @@
     padding-bottom: 10px;
 }
 
-.social-medias {
+.social-media-icons {
     text-align: center;
-    padding-bottom: 200px;
-    background-color: var(--cloud-white);
 }
 
 .social-media-icon {
     width: 25px;
     height: 25px;
-    margin: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.social-media-icon:hover {
+    filter: opacity(0.75);
+    transition: 0.2s;
+}
+
+.social-media-icon.body.dark {
+    filter: invert(1);
+}
+
+.social-media-icon.banner.light {
+    filter: invert(1);
 }
 
 .Bio {
@@ -89,27 +147,19 @@
     text-justify: auto;
 }
 
-.about-me-header {
-    margin-top: 100px;
-}
-
 .Section-Header {
     text-align: center;
 }
 
 .experience {
     margin: auto;
-    max-width: 800px;
     padding-top: 100px;
-    background: linear-gradient(var(--sky-blue), var(--night-black));
-    color: var(--night-black);
+    min-height: 1000px;
 }
 
-.InternshipColumns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 0.5em;
-
+.internship-columns {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .InternshipColumn {
@@ -126,7 +176,6 @@
     width: 350px;
     height: 100px;
     padding: 1em;
-    background-color: rgba(56, 163, 44, 0.25);
     color: rgb(250, 250, 250);
 }
 
@@ -134,7 +183,6 @@
     max-height: 30px;
     display: flex;
     justify-content: space-between;
-    background-color: rgba(44, 117, 163, 0.25);
 }
 
 .Company {
@@ -155,7 +203,6 @@
 
 .projects {
     max-width: 1000px;
-    background-color: var(--night-black);
     margin-left: auto;
     margin-right: auto;
 }
@@ -163,7 +210,7 @@
     color: var(--cloud-white);
 }
 
-.demos {
+.project-demos {
     display: flex;
 }
 
@@ -179,7 +226,7 @@
 }
 
 .demo:hover {
-    transition: transform .3s;
+    transition: transform 0.3s;
     transform: translate(0px, -5px);
 }
 
@@ -188,11 +235,10 @@
     display: flex;
     justify-content: space-between;
     color: var(--cloud-white);
-    background-color: rgba(0, 0, 0, .75);
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
 .hover-external-link {
