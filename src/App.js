@@ -198,9 +198,12 @@ function About({ mode }) {
                     <h3 className="bio-introduction">An introduction</h3>
                     <p className="bio-info">
                         I'm an aspiring software engineer familiar with Java, C,
-                        Python, React, Git, and AWS. Outside computers, I like
-                        to teach math and I try to play a racquet sport every
-                        day.
+                        Python, Git, and AWS. I've had a little experience with
+                        web development, but most of what I've learned has been
+                        through this project. I've enjoyed making this site, so
+                        I'm super excited to potentially continue this type of
+                        work with DALI. For some fun facts, I like to teach
+                        math, and I try to play a racquet sport every day.
                     </p>
                 </div>
                 <img className="my-photo" src={myPhoto} alt="me" />
