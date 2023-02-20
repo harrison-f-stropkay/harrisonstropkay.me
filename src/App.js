@@ -9,8 +9,8 @@ import sweeperVideo from "./assets/sweeper.mp4";
 import BlackjackVideo from "./assets/blackjack.mp4";
 import lightModeIcon from "./assets/mode-white.png";
 import darkModeIcon from "./assets/mode-black.png";
-import myPhoto from "./assets/my-photo.jpeg";
-// import dynamicIcon from "./assets/mode-blue.png";
+import myPhoto from "./assets/my-photo.jpg";
+import dynamicModeIcon from "./assets/mode-blue.png";
 
 /*
 
@@ -20,9 +20,10 @@ Now Add Some Content A picture of yourself Your name Where you're from/where you
 
 export default function App() {
     const [mode, setMode] = useState("dynamic");
+
     const cloudWhite = new Color("rgb(98%, 98%, 98%)");
-    const skyBlue = new Color("rgb(5%, 60%, 90%)");
-    const nightBlack = new Color("rgb(2%, 2%, 2%)");
+    const skyBlue = new Color("rgb(53, 140, 203)");
+    const nightBlack = new Color("rgb(5%, 5%, 5%)");
 
     // update scroll position and page height as user scrolls
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -98,49 +99,83 @@ export default function App() {
                 handleChangeMode={() => changeMode()}
             />
             <Name mode={mode} />
-            <SocialMedias mode={mode} />
-            <About />
-            <Projects />
-            <Experience />
+            <SocialMedias location="bodyIcons" mode={mode} />
+            <div style={{ height: "300px" }} />
+            <About mode={mode} />
+            <Projects mode={mode} />
+            <Experience mode={mode} />
+            <div style={{ height: "150px" }} />
         </div>
     );
 }
 
 function Banner({ scrollPosition, mode, handleChangeMode }) {
+    function getModeIconSource(mode) {
+        if (mode === "dynamic") {
+            return dynamicModeIcon;
+        } else if (mode === "dark") {
+            return darkModeIcon;
+        } else {
+            return lightModeIcon;
+        }
+    }
+
+    function handleModeIconMouseOver(mode) {
+        if (mode === "dynamic") {
+            return darkModeIcon;
+        } else if (mode === "dark") {
+            return lightModeIcon;
+        } else {
+            return dynamicModeIcon;
+        }
+    }
+
     return (
         <div
             className={"banner " + mode}
             style={{ top: 0.5 * Math.min(0, scrollPosition - 350) }}
         >
-            <div className="banner-anchors-and-mode-icon">
+            <div className="banner-icons-container">
                 <img
-                    src={mode === "light" ? lightModeIcon : darkModeIcon}
                     className={"banner-mode-icon " + mode}
+                    src={getModeIconSource(mode)}
                     alt="mode icon"
                     onClick={handleChangeMode}
+                    onMouseOver={(e) =>
+                        (e.currentTarget.src = handleModeIconMouseOver(mode))
+                    }
+                    onMouseOut={(e) =>
+                        (e.currentTarget.src = getModeIconSource(mode))
+                    }
                 />
                 <div className="banner-anchors-wrapper">
                     <AnchorLink
                         href="#about"
                         className={"banner-anchor " + mode}
+                        offset="50"
                     >
-                        about
-                    </AnchorLink>
-                    <AnchorLink
-                        href="#experience"
-                        className={"banner-anchor " + mode}
-                    >
-                        experience
+                        intro
                     </AnchorLink>
                     <AnchorLink
                         href="#projects"
                         className={"banner-anchor " + mode}
+                        offset="50"
                     >
                         projects
                     </AnchorLink>
+                    <AnchorLink
+                        href="#experience"
+                        className={"banner-anchor " + mode}
+                        offset="50"
+                    >
+                        experience
+                    </AnchorLink>
                 </div>
             </div>
-            <SocialMedias className="banner" />
+
+            <div>
+                <SocialMedias location="bannerIcons" mode={mode} />
+            </div>
         </div>
     );
 }
@@ -149,27 +184,34 @@ function Name({ mode }) {
     return <h1 className={"name " + mode}>Harrison Stropkay</h1>;
 }
 
-function About() {
+function About({ mode }) {
     return (
-        <div className="about" id="about">
-            <div className="about-words">
-                <h1 className="about-me-header">About me</h1>
-                <p className="bio">
-                    I'm an aspiring software engineer from Louisville, Kentucky
-                    who enjoys studying math and computer science. I also work
-                    as a TA and research assistant, and I like to play a racquet
-                    sport every day.
-                </p>
+        <div className={"section about " + mode} id="about">
+            <h2 className="header about-me">About me</h2>
+            <div className="about-content">
+                <div className="bio-words">
+                    <ul className="bio-list">
+                        <li>Dartmouth College</li>
+                        <li>Computer Science & Math Major</li>
+                        <li>Louisville, KY</li>
+                    </ul>
+                    <h3 className="bio-introduction">An introduction</h3>
+                    <p className="bio-info">
+                        I'm an aspiring software engineer familiar with Java, C,
+                        Python, React, Git, and AWS. Outside computers, I like
+                        to teach math and I try to play a racquet sport every
+                        day.
+                    </p>
+                </div>
+                <img className="my-photo" src={myPhoto} alt="me" />
             </div>
-
-            <img className="my-photo" src={myPhoto} alt="me" />
         </div>
     );
 }
 
-function SocialMedias({ mode }) {
+function SocialMedias({ location, mode }) {
     return (
-        <div className={"social-media-icons"}>
+        <div className={"socials-wrapper " + location}>
             <a
                 href="https://www.linkedin.com/in/harrisonstropkay"
                 target="_blank"
@@ -178,7 +220,7 @@ function SocialMedias({ mode }) {
                 <img
                     src="https://cdn.iconscout.com/icon/free/png-256/linkedin-1464529-1239440.png"
                     alt="linkedin icon"
-                    className={"social-media-icon " + mode}
+                    className={"social-media-icon " + location + " " + mode}
                 />
             </a>
             <a
@@ -189,21 +231,21 @@ function SocialMedias({ mode }) {
                 <img
                     src="https://cdn.icon-icons.com/icons2/2368/PNG/512/github_logo_icon_143772.png"
                     alt="github icon"
-                    className={"social-media-icon " + mode}
+                    className={"social-media-icon " + location + " " + mode}
                 />
             </a>
             <a href="mailto:apples.vole-01@icloud.com">
                 <img
                     src="https://cdn-icons-png.flaticon.com/512/88/88042.png"
                     alt="email icon"
-                    className={"social-media-icon " + mode}
+                    className={"social-media-icon " + location + " " + mode}
                 />
             </a>
         </div>
     );
 }
 
-function Experience() {
+function Experience({ mode }) {
     const internships = [
         {
             company: "Jacobs",
@@ -243,93 +285,120 @@ function Experience() {
             company: "Dartmouth CS 10",
             time: "Fall 2022",
             role: "Teaching Assistant",
-            info: "As above, plus led recitation and graded midterms",
+            info: "As above + led recitation and graded midterms",
         },
     ];
 
     return (
-        <div className="experience" id="experience">
-            <h1 className="experience-header">Experience</h1>
-            <div className="internship-columns">
-                <InternshipColumn internships={internships} title="Industry" />
-                <InternshipColumn internships={academia} title="Academia" />
+        <div className={"section experience " + mode} id="experience">
+            <h2 className="header experience">Experience</h2>
+            <div className="internship-columns-wrapper">
+                <InternshipColumn
+                    internships={internships}
+                    title="Industry"
+                    mode={mode}
+                />
+                <InternshipColumn
+                    internships={academia}
+                    title="Academia"
+                    mode={mode}
+                />
             </div>
         </div>
     );
 }
 
-function InternshipColumn({ internships, title }) {
+function InternshipColumn({ internships, title, mode }) {
     return (
-        <div className="InternshipColumn">
-            <h1 className="internship-column-title">{title}</h1>
+        <div className="internship-column">
+            <h3 className="internship-column-title">{title}</h3>
             {internships.map((i) => (
                 <Internship
                     company={i.company}
                     time={i.time}
                     role={i.role}
                     info={i.info}
+                    mode={mode}
                 />
             ))}
         </div>
     );
 }
 
-function Internship({ company, time, role, info }) {
+function Internship({ company, time, role, info, mode }) {
     return (
         <Fade bottom>
-            <div className="Internship">
-                <div className="Internship-Header">
-                    <h2 className="Company">{company}</h2>
-                    <h3 className="Time">{time}</h3>
+            <div className={"internship-wrapper " + mode}>
+                <div className="internship-header">
+                    <h3 className={"company " + mode}>{company}</h3>
+                    <h4 className={"time " + mode}>{time}</h4>
                 </div>
-                <h3 className="Role">{role}</h3>
-                <p className="Info">{info}</p>
+                <h4 className={"role " + mode}>{role}</h4>
+                <p className={"info " + mode}>{info}</p>
             </div>
         </Fade>
     );
 }
 
-function Projects() {
+function Projects({ mode }) {
     return (
-        <div className="projects" id="projects">
-            <h1 className="projects-title">Some of my projects</h1>
-            <div className="project-demos">
+        <div className={"section projects " + mode} id="projects">
+            <h2 className="header projects">Projects</h2>
+            <div className="projects-column-wrapper">
                 <Demo
                     title="Sweeper"
                     video={sweeperVideo}
                     link="https://github.com/harrisonstropkay/sweeper"
+                    info="An interactive Minesweeper solver that assesses all possible bomb configurations at every move. It makes a few shortcuts by first searching for simple, guaranteed-value tiles, then calculates bomb probabilities by recursively backtracking along revealed tiles."
                 />
                 <Demo
                     title="Blackjack"
                     video={BlackjackVideo}
                     link="https://www.cs.dartmouth.edu/~tjp/cs50/project/index.html"
+                    info="A self-improving blackjack player written in C for the CS 50 final project. It uses a reinforcement learning algorithm to approach optimal game strategy after trained on hundreds of thousands of practice hands."
                 />
             </div>
         </div>
     );
 }
 
-function Demo({ title, video, link }) {
+function Demo({ title, video, link, info }) {
     return (
-        <div className="demo">
-            <a href={link} target="_blank" rel="noopener noreferrer">
-                <HoverVideoPlayer
-                    className="hover-video-player"
-                    videoSrc={video}
-                    loop={false}
-                    sizingMode="container"
-                    pausedOverlay={
-                        <div className="paused-overlay">
-                            <h1 className>{title}</h1>
-                            <img
-                                className="hover-external-link"
-                                src="https://static.thenounproject.com/png/2863113-200.png"
-                                alt="external link"
-                            />
-                        </div>
-                    }
-                />
-            </a>
+        <div className="demo-hover-wrapper">
+            <Fade bottom>
+                <div className="demo">
+                    <a
+                        className="demo-link-wrapper"
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <HoverVideoPlayer
+                            className="hover-video-player"
+                            videoSrc={video}
+                            loop={false}
+                            sizingMode="container"
+                            pausedOverlay={
+                                <div className="paused-overlay">
+                                    <div className="paused-overlay-header">
+                                        <h3 className="paused-overlay-title">
+                                            {title}
+                                        </h3>
+                                        <img
+                                            className="hover-external-link"
+                                            src="https://static.thenounproject.com/png/2863113-200.png"
+                                            alt="external link"
+                                        />
+                                    </div>
+                                    <p className="paused-overlay-info">
+                                        {info}
+                                    </p>
+                                </div>
+                            }
+                        />
+                    </a>
+                </div>
+            </Fade>
         </div>
     );
 }
