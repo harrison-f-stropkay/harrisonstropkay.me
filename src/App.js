@@ -202,8 +202,8 @@ function About({ mode }) {
                         web development, but most of what I've learned has been
                         through this project. I've enjoyed making this site, so
                         I'm super excited to potentially continue this type of
-                        work with DALI. For some fun facts, I like to teach
-                        math, and I try to play a racquet sport every day.
+                        work with DALI. I also enjoy working as a volunteer math
+                        teacher, and I try to play a racquet sport every day.
                     </p>
                 </div>
                 <img className="my-photo" src={myPhoto} alt="me" />
@@ -254,7 +254,7 @@ function Experience({ mode }) {
             company: "Jacobs",
             time: "*Summer 2023",
             role: "Incoming Software Engineer Intern",
-            info: "TBD",
+            info: "Improving avionics UX for military aircraft",
         },
 
         {
@@ -355,10 +355,10 @@ function Projects({ mode }) {
                     info="An interactive Minesweeper solver that assesses all possible bomb configurations at every move. It makes a few shortcuts by first searching for simple, guaranteed-value tiles, then calculates bomb probabilities by recursively backtracking along revealed tiles."
                 />
                 <Demo
-                    title="Blackjack"
+                    title="21"
                     video={BlackjackVideo}
                     link="https://www.cs.dartmouth.edu/~tjp/cs50/project/index.html"
-                    info="A self-improving blackjack player written in C for the CS 50 final project. It uses a reinforcement learning algorithm to approach optimal game strategy after trained on hundreds of thousands of practice hands."
+                    info="A self-improving blackjack player written in C for CS 50's final project. It uses a reinforcement learning algorithm and hundreds of thousands of practice hands to approach the optimal strategy."
                 />
             </div>
         </div>
