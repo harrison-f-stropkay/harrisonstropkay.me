@@ -103,7 +103,7 @@
 }
 
 .name {
-    padding-top: 300px;
+    padding-top: 250px;
     text-align: center;
 }
 
@@ -221,8 +221,10 @@
 }
 
 .paused-overlay-header {
+    width: auto;
     display: flex;
     justify-content: space-between;
+    bottom: 0px;
 }
 
 .paused-overlay-title {
@@ -236,7 +238,8 @@
 
 .hover-external-link {
     filter: invert(1);
-    height: 48px;
+    height: 40px;
+    margin-top: -8px;
 }
 
 .experience.dynamic {
@@ -258,6 +261,7 @@
 
 .internship-column-title {
     margin-bottom: 0px;
+    text-align: center;
 }
 
 .internship-wrapper {

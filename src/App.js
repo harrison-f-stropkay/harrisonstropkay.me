@@ -11,12 +11,9 @@ import lightModeIcon from "./assets/mode-white.png";
 import darkModeIcon from "./assets/mode-black.png";
 import myPhoto from "./assets/my-photo.jpg";
 import dynamicModeIcon from "./assets/mode-blue.png";
-
-/*
-
-Now Add Some Content A picture of yourself Your name Where you're from/where you live A short bio telling us about yourself (you might include/mention: design/programming applications you know, what you enjoy most about ui/ux design/development, why you're excited to work with DALI.) Something interesting about yourself :-) Go here to learn some HTML/CSS: http://learn.shayhowe.com/html-css/ Have fun with this part - experiment. To see your changes just refresh the page in your browser.
-
-*/
+import linkedinIcon from "./assets/linkedin-icon.webp";
+import githubIcon from "./assets/github-icon.png";
+import emailIcon from "./assets/email-icon.png";
 
 export default function App() {
     const [mode, setMode] = useState("dynamic");
@@ -198,12 +195,9 @@ function About({ mode }) {
                     <h3 className="bio-introduction">An introduction</h3>
                     <p className="bio-info">
                         I'm an aspiring software engineer familiar with Java, C,
-                        Python, Git, and AWS. I've had a little experience with
-                        web development, but most of what I've learned has been
-                        through this project. I've enjoyed making this site, so
-                        I'm super excited to potentially continue this type of
-                        work with DALI. I also enjoy working as a volunteer math
-                        teacher, and I try to play a racquet sport every day.
+                        Python, Git, AWS, and some web development. I enjoy
+                        working as a volunteer math teacher, and I try to play a
+                        racquet sport every day.
                     </p>
                 </div>
                 <img className="my-photo" src={myPhoto} alt="me" />
@@ -221,7 +215,7 @@ function SocialMedias({ location, mode }) {
                 rel="noopener noreferrer"
             >
                 <img
-                    src="https://cdn.iconscout.com/icon/free/png-256/linkedin-1464529-1239440.png"
+                    src={linkedinIcon}
                     alt="linkedin icon"
                     className={"social-media-icon " + location + " " + mode}
                 />
@@ -232,14 +226,14 @@ function SocialMedias({ location, mode }) {
                 rel="noopener noreferrer"
             >
                 <img
-                    src="https://cdn.icon-icons.com/icons2/2368/PNG/512/github_logo_icon_143772.png"
+                    src={githubIcon}
                     alt="github icon"
                     className={"social-media-icon " + location + " " + mode}
                 />
             </a>
             <a href="mailto:apples.vole-01@icloud.com">
                 <img
-                    src="https://cdn-icons-png.flaticon.com/512/88/88042.png"
+                    src={emailIcon}
                     alt="email icon"
                     className={"social-media-icon " + location + " " + mode}
                 />
@@ -249,7 +243,7 @@ function SocialMedias({ location, mode }) {
 }
 
 function Experience({ mode }) {
-    const internships = [
+    const industry = [
         {
             company: "Jacobs",
             time: "*Summer 2023",
@@ -297,7 +291,7 @@ function Experience({ mode }) {
             <h2 className="header experience">Experience</h2>
             <div className="internship-columns-wrapper">
                 <InternshipColumn
-                    internships={internships}
+                    internships={industry}
                     title="Industry"
                     mode={mode}
                 />
