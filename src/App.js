@@ -9,7 +9,7 @@ import sweeperVideo from "./assets/sweeper.mp4";
 import BlackjackVideo from "./assets/blackjack.mp4";
 import lightModeIcon from "./assets/mode-white.png";
 import darkModeIcon from "./assets/mode-black.png";
-import myPhoto from "./assets/my-photo.jpg";
+import myPhoto from "./assets/my-photo.png";
 import dynamicModeIcon from "./assets/mode-blue.png";
 import linkedinIcon from "./assets/linkedin-icon.webp";
 import githubIcon from "./assets/github-icon.png";
@@ -195,8 +195,8 @@ function About({ mode }) {
                     <h3 className="bio-introduction">An introduction</h3>
                     <p className="bio-info">
                         I'm an aspiring software engineer familiar with Java, C,
-                        Python, Git, AWS, and some web development. I enjoy
-                        working as a volunteer math teacher, and I try to play a
+                        Python, Git, AWS, and web development. I also enjoy
+                        working as a volunteer math teacher and try to play a
                         racquet sport every day.
                     </p>
                 </div>
