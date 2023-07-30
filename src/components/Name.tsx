@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 
 const Name: React.FC = () => {
   return (
-    <Typography variant="h1" sx={{ fontWeight: 'bold', textAlign: 'center' }}>
+    <Typography variant="h2" sx={{ fontWeight: 'bold', textAlign: 'center' }}>
       Harrison Stropkay
     </Typography>
   );

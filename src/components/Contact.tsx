@@ -1,21 +1,11 @@
-// src/components/Contact.tsx
-
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/redux/store';
-import { css } from '@emotion/react';
-import { Paper, Typography, TextField, Button } from '@mui/material';
-import { LIGHT, DARK, modeSelector } from '../store/redux/slices/modeSlice';
+import React, { useState } from "react";
+import { Paper, Typography, TextField, Button } from "@mui/material";
 
 const Contact: React.FC = () => {
-  const mode = useSelector(modeSelector);
-  const backgroundColor = mode === DARK ? '#333' : '#f2f2f2';
-  const textColor = mode === DARK ? '#f2f2f2' : '#333';
-
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

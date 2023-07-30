@@ -1,14 +1,8 @@
-// src/components/Header.tsx
-
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store/redux/store';
-import { AppBar, Toolbar, Typography, IconButton, Tooltip } from '@mui/material';
-import { css, jsx } from '@emotion/react';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { lightTheme, darkTheme } from '../theme';
-import { changeMode, Mode, LIGHT, DARK, modeSelector } from '../store/redux/slices/modeSlice';
+import React from "react";
+import { AppBar, Toolbar, Typography, IconButton, Tooltip } from "@mui/material";
+import { css, jsx } from "@emotion/react";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
 
 const headerStyles = css`
   display: flex;
@@ -25,23 +19,17 @@ const titleStyles = css`
 const iconButtonStyles = css`
   color: #000;
 `;
-
 const Header: React.FC = () => {
-  const mode = useSelector(modeSelector);
-  const themeIcon = mode === DARK ? <Brightness7Icon /> : <Brightness4Icon />;
-  const dispatch = useDispatch();
+  const themeIcon = <Brightness7Icon />; // <Brightness4Icon />;
 
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
-        <Typography variant="h6">
-          My Portfolio
-        </Typography>
-        <Tooltip title="Toggle Dark Mode">
-          <IconButton onClick={() => dispatch(changeMode())}>
-            {themeIcon}
-          </IconButton>
+        <Typography variant="h6">My Portfolio</Typography>
+        <Tooltip title="Toggle Dark theme">
+          <IconButton onClick={() => console.log("clicked")} />
         </Tooltip>
+        {themeIcon}
       </Toolbar>
     </AppBar>
   );

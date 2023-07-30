@@ -1,28 +1,18 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
+import { blue, green } from "@mui/material/colors";
 
-const lightTheme = createTheme({
+const theme = createTheme({
   palette: {
-    mode: 'light',
     primary: {
-      main: '#2196f3',
+      main: blue[300],
     },
     secondary: {
-      main: '#f50057',
+      main: green[500],
     },
   },
 });
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#bb86fc',
-    },
-    secondary: {
-      main: '#03dac6',
-    },
-  },
-});
+type Theme = typeof theme;
 
-export { lightTheme, darkTheme };
-export type Theme = typeof lightTheme;
+export default theme;
+export { Theme };
